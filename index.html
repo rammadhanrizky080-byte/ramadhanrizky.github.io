@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | RAMADHAN</title>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f5f7fa;
+            --text: #222;
+            --box: #ffffff;
+            --primary: #007bff;
+            --accent: #00c2ff;
+        }
+
+        body.dark {
+            --bg: #0d1117;
+            --text: #e6edf3;
+            --box: #161b22;
+            --primary: #58a6ff;
+            --accent: #009dff;
+        }
+
+        /* GENERAL */
+        body {
+            margin: 0;
+            background: var(--bg);
+            font-family: "Poppins", sans-serif;
+            color: var(--text);
+            transition: 0.3s;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            animation: fadeDown 1s ease;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .toggle-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: var(--box);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            animation: fade 1s ease;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: var(--text);
+            padding: 12px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 600;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+            background: rgba(0, 123, 255, 0.1);
+        }
+
+        /* CONTAINER */
+        .container {
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* CARD / BOX */
+        .box {
+            background: var(--box);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            animation: fade 1s ease;
+            transition: transform 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PROFILE SECTION */
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            margin: 20px 0;
+            display: block;
+        }
+
+        /* MEDIA SECTION */
+        .media-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .media-item {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(0,0,0,0.03);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--box);
+            margin-top: 20px;
+        }
+        
+        th {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        tr:hover {
+            background: rgba(0, 123, 255, 0.05);
+        }
+
+        /* FORM */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.1);
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Poppins", sans-serif;
+            transition: 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        button {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #hasil {
+            margin-top: 20px;
+            padding: 15px;
+            background: #d8ffd8;
+            border-radius: 10px;
+            display: none;
+            border-left: 5px solid #28a745;
+            animation: fade 0.5s ease;
+        }
+
+        /* LAYOUT */
+        .flex {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .col {
+            flex: 1;
+            padding: 25px;
+            border-radius: 15px;
+            min-width: 250px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        
+        .col:hover {
+            transform: scale(1.05);
+        }
+        
+        .c1 { 
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e); 
+            color: white;
+        }
+        
+        .c2 { 
+            background: linear-gradient(135deg, #4CAF50, #8BC34A); 
+            color: white;
+        }
+        
+        .c3 { 
+            background: linear-gradient(135deg, #2196F3, #03A9F4); 
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--box);
+            color: var(--text);
+            margin-top: 50px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            nav a {
+                display: block;
+                margin: 5px 0;
+                padding: 10px;
+            }
+            
+            .flex {
+                flex-direction: column;
+            }
+            
+            .toggle-btn {
+                position: relative;
+                right: auto;
+                top: auto;
+                margin: 10px auto;
+                display: inline-flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Portofolio Muhammad Rizky Ramadhan</h1>
+        <p>Project Web – Universitas Pamulang</p>
+        <button class="toggle-btn" onclick="toggleDark()">
+            <span id="mode-icon">🌙</span>
+            <span id="mode-text">Mode Gelap</span>
+        </button>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#tentang">Tentang</a>
+        <a href="#media">Media</a>
+        <a href="#tabel">Kemampuan</a>
+        <a href="#formulir">Kontak</a>
+        <a href="#layout">Info Kontak</a>
+        <a href="#js">Interaksi</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- BASIC + PROFILE -->
+        <div class="box" id="tentang">
+            <h2>👨‍💻 Profil Saya</h2>
+            
+            <!-- Ganti dengan foto Anda -->
+            <div style="text-align: center;">
+                <img src="C:\Users\RAMMADHAN\OneDrive\문서\UAS RAMADHAN\file\A.jpg" 
+                     alt="Foto Profil" 
+                     class="profile-img">
+            </div>
+
+            <p><b>🎯 Nama:</b> Muhammad Rizky Ramadhan</p>
+            <p><b>📍 Alamat:</b> JALAN SMK SASMITA JAYA 2, Perum Wisma Pijar NO.52, Rt005/Rw004, Pamulang, Tangerang Selatan</p>
+            <p><b>❤️ Hobi:</b> Menulis, Membaca, Olahraga</p>
+            <hr>
+            <p><i>💡 Saya adalah individu yang bertanggung jawab, disiplin, dan mampu bekerja dalam tim maupun mandiri. Selalu bersemangat untuk belajar hal baru dan berkembang dalam bidang teknologi.</i></p>
+        </div>
+
+        <!-- MEDIA -->
+        <div class="box" id="media">
+            <h2>📷 Media Portfolio</h2>
+            
+            <div class="media-container">
+                <div class="media-item">
+                    <h3>🖼️ Gambar Project:</h3>
+                    <!-- Ganti dengan gambar project Anda -->
+                    <img src="C:\Users\RAMMADHAN\OneDrive\문서\UAS RAMADHAN\file\WhatsApp Image 2025-12-12 at 00.59.33_9d2c1376.jpg" 
+                         alt="Project 1" 
+                         style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px;"></p>
+                </div>
+                
+                <div class="media-item">
+                    <h3>🎵 Audio Presentasi:</h3>
+                    <audio controls style="width: 100%; margin-top: 10px;">
+                        <source src="C:\Users\RAMMADHAN\OneDrive\문서\UAS RAMADHAN\file\WhatsApp Audio 2025-12-16 at 22.03.05_b5a0c57c.mp3" type="audio/mpeg">
+                        Browser Anda tidak mendukung elemen audio.
+                    </audio>
+                    <p></p>
+                </div>
+                
+                <div class="media-item">
+                    <h3>🎬 Video Demo:</h3>
+                    <video controls style="width: 100%; border-radius: 10px; margin-top: 10px;">
+                        <source src="C:\Users\RAMMADHAN\OneDrive\문서\UAS RAMADHAN\file\WhatsApp Video 2025-12-16 at 19.54.49_726bcec7.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung elemen video.
+                    </video>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="box" id="tabel">
+            <h2>📊 Kemampuan & Skill</h2>
+
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>Skill</th>
+                    <th>Level</th>
+                    <th>Keterangan</th>
+                </tr>
+                <tr>
+                    <td>1.</td>
+                    <td>HTML</td>
+                    <td>🟡🟡🟡⚪⚪</td>
+                    <td>Cukup Baik</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>CSS</td>
+                    <td>🟡🟡🟡⚪⚪</td>
+                    <td>Cukup Baik</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>JavaScript</td>
+                    <td>🟡🟡⚪⚪⚪</td>
+                    <td>Sedang Dipelajari</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Public Speaking</td>
+                    <td>🟢🟢🟢🟢🟢</td>
+                    <td>Sangat Baik</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Leadership</td>
+                    <td>🟢🟢🟢🟢🟢</td>
+                    <td>Sangat Baik</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- FORM -->
+        <div class="box" id="formulir">
+            <h2>📩 Hubungi Saya</h2>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap:</label>
+                    <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="nama@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pesan">Pesan:</label>
+                    <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                </div>
+
+                <button type="button" onclick="kirimPesan()">Kirim Pesan</button>
+            </form>
+
+            <div id="hasil"></div>
+        </div>
+
+        <!-- LAYOUT -->
+        <div class="box" id="layout">
+            <h2>📞 Informasi Kontak</h2>
+
+            <div class="flex">
+                <div class="col c1">
+                    <h3>📱 Telepon</h3>
+                    <p>+62 813 9848 3137</p>
+                </div>
+                <div class="col c2">
+                    <h3>📧 Email</h3>
+                    <p>rammadhanrizky080@gmail.com</p>
+                </div>
+                <div class="col c3">
+                    <h3>📍 Lokasi</h3>
+                    <p>Pamulang, Tangerang Selatan</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- JAVASCRIPT -->
+        <div class="box" id="js">
+            <h2>🎯 Interaksi JavaScript</h2>
+            <p>Coba fitur interaktif di bawah ini:</p>
+            
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+                <button onclick="showAlert()">💬 Ucapan Terima Kasih</button>
+                <button onclick="changeBackground()">🎨 Ubah Warna Header</button>
+                <button onclick="showTime()">⏰ Tampilkan Waktu</button>
+                <button onclick="resetAll()">🔄 Reset</button>
+            </div>
+            
+            <div id="timeDisplay" style="margin-top: 20px; padding: 15px; background: var(--bg); border-radius: 10px; display: none;"></div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2025 Muhammad Rizky Ramadhan - Portofolio Web</p>
+        <p>Universitas Pamulang | Teknik Informatika</p>
+    </footer>
+
+    <script>
+        // FORM OUTPUT
+        function kirimPesan() {
+            let nama = document.getElementById("nama").value;
+            let email = document.getElementById("email").value;
+            let pesan = document.getElementById("pesan").value;
+
+            if (!nama || !email || !pesan) {
+                alert("Harap isi semua field!");
+                return;
+            }
+
+            let hasil = document.getElementById("hasil");
+            hasil.style.display = "block";
+            hasil.innerHTML = `
+                <h4>✅ Pesan Terkirim!</h4>
+                <p><b>Nama:</b> ${nama}</p>
+                <p><b>Email:</b> ${email}</p>
+                <p><b>Pesan:</b> ${pesan}</p>
+                <p><small>Terima kasih telah menghubungi saya. Saya akan membalas pesan Anda segera.</small></p>
+            `;
+
+            // Reset form
+            document.getElementById("contactForm").reset();
+            
+            // Auto hide setelah 10 detik
+            setTimeout(() => {
+                hasil.style.display = "none";
+            }, 10000);
+        }
+
+        // DARK MODE TOGGLE
+        function toggleDark() {
+            document.body.classList.toggle("dark");
+            const icon = document.getElementById("mode-icon");
+            const text = document.getElementById("mode-text");
+            
+            if (document.body.classList.contains("dark")) {
+                icon.textContent = "☀️";
+                text.textContent = "Mode Terang";
+            } else {
+                icon.textContent = "🌙";
+                text.textContent = "Mode Gelap";
+            }
+        }
+
+        // FUNGSI TAMBAHAN
+        function showAlert() {
+            alert("Terima kasih telah mengunjungi portofolio saya! Semoga Anda terkesan dengan karya saya.");
+        }
+        
+        function changeBackground() {
+            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.querySelector('header').style.background = `linear-gradient(45deg, ${randomColor}, ${randomColor}80)`;
+        }
+        
+        function showTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            
+            const timeDisplay = document.getElementById("timeDisplay");
+            timeDisplay.style.display = "block";
+            timeDisplay.innerHTML = `<strong>Waktu Sekarang:</strong> ${timeString}`;
+        }
+        
+        function resetAll() {
+            // Reset header background
+            document.querySelector('header').style.background = '';
+            
+            // Hide time display
+            document.getElementById("timeDisplay").style.display = "none";
+            
+            // Reset form jika ada
+            const form = document.getElementById("contactForm");
+            if (form) form.reset();
+            
+            // Hide result
+            document.getElementById("hasil").style.display = "none";
+        }
+
+        // SMOOTH SCROLL UNTUK NAVIGASI
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
